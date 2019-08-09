@@ -1,5 +1,8 @@
-# nuts-auth-js
-An easy to use client js library to authenticate a user with nuts-auth
+# @nuts-foundation/auth
+
+An easy to use client js library to authenticate a user with nuts-auth.
+
+It connects to the auth server, polls for status, updates the UI and forwards the user to a given URL at success.
 
 ## Install
 ```
