@@ -1,5 +1,7 @@
 # @nuts-foundation/auth
 
+[![npm (scoped)](https://img.shields.io/npm/v/@nuts-foundation/auth)](https://www.npmjs.com/package/@nuts-foundation/auth)
+
 An easy to use client js library to authenticate a user with nuts-auth.
 
 It connects to the auth server, polls for status, updates the UI and forwards the user to a given URL at success.
