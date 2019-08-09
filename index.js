@@ -138,6 +138,7 @@ let NutsLogin = (function () {
         if (config.logLevel === 'debug') {
           console.log("result", res);
         }
+        // TODO: make this endpoint configurable
         window.location = '/user'
       }).catch((err) => {
         console.log("error while validating session", err);
