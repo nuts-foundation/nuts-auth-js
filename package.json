@@ -1,4 +1,10 @@
 {
   "name":"@nuts-foundation/auth",
-  "version":"0.0.0"
+  "version":"0.0.0",
+  "description":"Lib to connect your frontend to the nuts-auth.",
+  "repository":"nuts-foundation/nuts-auth-js",
+  "main":"index.js",
+  "keywords":[
+    "nuts","irma","auth","authentication"
+  ]
 }
