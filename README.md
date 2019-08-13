@@ -19,7 +19,7 @@ From CDN:
 Combine it with the NUTS style guide and get the frontend for free!
 https://github.com/nuts-foundation/irma-web-frontend
 
-## Dependencies:
+## Dependencies
 
 This library depends on the [qrcodejs package from davidshumjs](https://davidshimjs.github.io/qrcodejs/)
 
