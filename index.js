@@ -12,6 +12,8 @@ let NutsLogin = (function () {
     config.logLevel = 'logLevel' in config ? config.logLevel : 'none';
     // on success, post token to which path?
     config.postTokenPath = 'postTokenPath' in config ? config.postTokenPath : '/login';
+    // location for the browser to navigate to after success
+    config.afterSuccessPath = 'afterSuccessPath' in config ? config.afterSuccessPath : '/user'
 
     if (!document.getElementById(config.qrEl)) {
       throw(`Could not load qr code: element with id ${config.qrEl} not found!`);
@@ -91,7 +93,7 @@ let NutsLogin = (function () {
       )
     };
 
-// handle these cases: https://godoc.org/github.com/privacybydesign/irmago/server#Status
+  // handle these cases: https://godoc.org/github.com/privacybydesign/irmago/server#Status
     const stateMachine = function (status) {
       switch (status.status) {
         case "INITIALIZED":
@@ -138,8 +140,11 @@ let NutsLogin = (function () {
         if (config.logLevel === 'debug') {
           console.log("result", res);
         }
-        // TODO: make this endpoint configurable
-        window.location = '/user'
+        if (res.status == 200) {
+            window.location = config.afterSuccessPath
+        } else {
+          setState(ERROR_STATE);
+        }
       }).catch((err) => {
         console.log("error while validating session", err);
       })
@@ -180,5 +185,5 @@ let NutsLogin = (function () {
   return {
     init,
   };
-
+  
 })();
