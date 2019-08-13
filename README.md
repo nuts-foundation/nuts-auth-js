@@ -7,15 +7,31 @@ An easy to use client js library to authenticate a user with nuts-auth.
 It connects to the auth server, polls for status, updates the UI and forwards the user to a given URL at success.
 
 ## Install
-```
-npm i @nuts-foundation/auth
+
+From CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@nuts-foundation/auth/index.min.js"></script>
 ```
 
 ## Usage
 
-This can be combined with the css from https://github.com/nuts-foundation/irma-web-frontend
+Combine it with the NUTS style guide and get the frontend for free!
+https://github.com/nuts-foundation/irma-web-frontend
+
+# Dependencies:
+
+This library depends on the [qrcodejs package from davidshumjs](https://davidshimjs.github.io/qrcodejs/)
 
 ```html
+<!--The nuts auth styleguide -->
+<link rel="stylesheet" href="//nuts-foundation.github.io/irma-web-frontend/application.css" />
+<!--A lib to render qr-codes -->
+<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@gh-pages/qrcode.min.js"></script>
+<!--The nuts auth js lib -->
+<script src="https://cdn.jsdelivr.net/npm/@nuts-foundation/auth@0.1.0/index.min.js"></script>
+
+
 <section class="nuts-login-form irma-web-form">
   <header class="header">
     <p>Login with <i class="irma-web-logo">IRMA</i></p>
@@ -62,7 +78,8 @@ nutsLogin = NutsLogin.init({
     nutsAuthUrl: "http://localhost:1323",
     qrEl: 'qrcode',
     logLevel: 'debug',
-    postTokenPath: '/login'
+    postTokenPath: '/login',
+    afterSuccessPath: '/user'
   })
 nutsLogin.start();
 ````
