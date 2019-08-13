@@ -14,14 +14,16 @@ From CDN:
 <script src="https://cdn.jsdelivr.net/npm/@nuts-foundation/auth/index.min.js"></script>
 ```
 
-## Usage
+## Style guide
 
 Combine it with the NUTS style guide and get the frontend for free!
 https://github.com/nuts-foundation/irma-web-frontend
 
-# Dependencies:
+## Dependencies:
 
 This library depends on the [qrcodejs package from davidshumjs](https://davidshimjs.github.io/qrcodejs/)
+
+## Usage
 
 ```html
 <!--The nuts auth styleguide -->
