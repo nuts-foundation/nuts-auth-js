@@ -4,35 +4,34 @@
 
 An easy to use client js library to authenticate a user with nuts-auth.
 
-It connects to the auth server, polls for status, updates the UI and forwards the user to a given URL at success.
+The library helps you with the following:
+
+* Connections to the nuts-node
+* Creating login sessions
+* Polling for IRMA session status
+* Updating the UI on session changes
+* Forwarding the user to specific location after successful login
+* Gracefully handling browser reload during login sessions
 
 ## Install
 
-From CDN:
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/@nuts-foundation/auth/index.min.js"></script>
+```
+$ npm add @nuts-foundation/auth
 ```
 
 ## Style guide
 
 Combine it with the NUTS style guide and get the frontend for free!
+
 https://github.com/nuts-foundation/irma-web-frontend
-
-## Dependencies
-
-This library depends on the [qrcodejs package from davidshumjs](https://davidshimjs.github.io/qrcodejs/)
 
 ## Usage
 
 ```html
 <!--The nuts auth styleguide -->
 <link rel="stylesheet" href="//nuts-foundation.github.io/irma-web-frontend/application.css" />
-<!--A lib to render qr-codes -->
-<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@gh-pages/qrcode.min.js"></script>
-<!--The nuts auth js lib -->
-<script src="https://cdn.jsdelivr.net/npm/@nuts-foundation/auth@0.1.0/index.min.js"></script>
-
+<!--The nuts auth js lib. Note: include path depends on your dev stack-->
+<script src="/node_modules/@nuts-foundation/auth/dist/index.min.js"></script>
 
 <section class="nuts-login-form irma-web-form">
   <header class="header">
@@ -49,7 +48,7 @@ This library depends on the [qrcodejs package from davidshumjs](https://davidshi
       <p>One moment please...</p>
     </section>
     <section class="centered initialized">
-      <div id="qrcode"></div>
+      <canvas id="qrcode"></canvas>
     </section>
     <section class="centered waiting-for-user">
       <div class="irma-web-waiting-for-user-animation"></div>
@@ -76,7 +75,7 @@ This library depends on the [qrcodejs package from davidshumjs](https://davidshi
 ```
 
 ```js
-nutsLogin = NutsLogin.init({
+nutsLogin = nutsAuth.init({
     nutsAuthUrl: "http://localhost:1323",
     qrEl: 'qrcode',
     logLevel: 'debug',

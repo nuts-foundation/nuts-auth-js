@@ -1,13 +1,30 @@
 {
   "name": "@nuts-foundation/auth",
-  "version": "0.1.1",
-  "description": "Lib to connect your frontend to the nuts-auth.",
+  "version": "0.2.0-rc.5",
+  "description": "Lib to connect your frontend to nuts-auth.",
   "repository": "nuts-foundation/nuts-auth-js",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "license": "LGPL-3.0",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
   "keywords": [
     "nuts",
     "irma",
     "auth",
     "authentication"
-  ]
+  ],
+  "files": [
+    "dist/index.js"
+  ],
+  "sideEffects": false,
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {
+    "qrcode": "^1.4.1"
+  }
 }
