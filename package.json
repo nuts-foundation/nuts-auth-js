@@ -4,12 +4,16 @@
   "description": "Lib to connect your frontend to nuts-auth.",
   "repository": "nuts-foundation/nuts-auth-js",
   "main": "src/index.js",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
   "keywords": [
     "nuts",
     "irma",
     "auth",
     "authentication"
   ],
+  "sideEffects": false,
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "babel-loader": "^8.0.6",
