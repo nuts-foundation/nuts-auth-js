@@ -31,7 +31,7 @@ https://github.com/nuts-foundation/irma-web-frontend
 <!--The nuts auth styleguide -->
 <link rel="stylesheet" href="//nuts-foundation.github.io/irma-web-frontend/application.css" />
 <!--The nuts auth js lib. Note: include path depends on your dev stack-->
-<script src="/node_modeuls/@nuts-foundation/auth/dist/index.min.js"></script>
+<script src="/node_modules/@nuts-foundation/auth/dist/index.min.js"></script>
 
 <section class="nuts-login-form irma-web-form">
   <header class="header">
