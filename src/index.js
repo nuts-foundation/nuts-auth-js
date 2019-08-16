@@ -1,4 +1,6 @@
-const init = (config) => {
+import QRCode from 'qrcode'
+
+export function init(config) {
   // set default config values
 
   // the url of the nuts-auth server
@@ -10,13 +12,11 @@ const init = (config) => {
   // on success, post token to which path?
   config.postTokenPath = 'postTokenPath' in config ? config.postTokenPath : '/login';
   // location for the browser to navigate to after success
-  config.afterSuccessPath = 'afterSuccessPath' in config ? config.afterSuccessPath : '/user'
+  config.afterSuccessPath = 'afterSuccessPath' in config ? config.afterSuccessPath : '/user';
 
   if (!document.getElementById(config.qrEl)) {
     throw(`Could not load qr code: element with id ${config.qrEl} not found!`);
   }
-  // attach a qrCode the qrCode div
-  let qrCode = new QRCode(config.qrEl);
 
   const fetchStatus = function (sessionId) {
     return fetch(`${config.nutsAuthUrl}/auth/contract/session/${sessionId}`, {
@@ -36,14 +36,18 @@ const init = (config) => {
   };
 
 
-  const start = function () {
-    qrCode.clear()
+  const setQrCode= (qrCodeInfo) => {
+    const canvasEl = document.getElementById(config.qrEl);
+    const qrCodeString = JSON.stringify(qrCodeInfo);
+    QRCode.toCanvas(canvasEl, qrCodeString, { width: 350 });
+  };
 
+  const start = function () {
     setState(WAIT_FOR_QR_CODE);
 
     let existingSessionInit = JSON.parse(localStorage.getItem('session_init_info'));
     if (existingSessionInit) {
-      qrCode.makeCode(JSON.stringify(existingSessionInit.qr_code_info));
+      setQrCode(existingSessionInit.qr_code_info);
       pollForStatus(existingSessionInit.session_id);
       return;
     }
@@ -65,12 +69,13 @@ const init = (config) => {
       cache: 'reload'
     }).then((result) => result.json()
     ).then((result) => {
-      qrCode.makeCode(JSON.stringify(result.qr_code_info));
+      // qrCode.makeCode(JSON.stringify(result.qr_code_info));
+      setQrCode(result.qr_code_info);
       localStorage.setItem('session_init_info', JSON.stringify(result));
       pollForStatus(result.session_id);
     }).catch((err) => {
         console.log("err", err);
-        stateMachine("ERROR")
+        stateMachine("ERROR");
       }
     );
   };
@@ -137,7 +142,7 @@ const init = (config) => {
       if (config.logLevel === 'debug') {
         console.log("result", res);
       }
-      if (res.status == 200) {
+      if (res.status === 200) {
         window.location = config.afterSuccessPath
       } else {
         setState(ERROR_STATE);
@@ -177,6 +182,4 @@ const init = (config) => {
     hideHelper,
     start,
   }
-}
-
-export default init;
+};

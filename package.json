@@ -15,5 +15,8 @@
     "babel-loader": "^8.0.6",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {
+    "qrcode": "^1.4.1"
   }
 }
