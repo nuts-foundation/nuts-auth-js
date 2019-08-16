@@ -1,7 +1,7 @@
 {
   "name": "@nuts-foundation/auth",
   "version": "0.1.1",
-  "description": "Lib to connect your frontend to the nuts-auth.",
+  "description": "Lib to connect your frontend to nuts-auth.",
   "repository": "nuts-foundation/nuts-auth-js",
   "main": "index.js",
   "keywords": [
@@ -9,5 +9,11 @@
     "irma",
     "auth",
     "authentication"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6"
+  }
 }
