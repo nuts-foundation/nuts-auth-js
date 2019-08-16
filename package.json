@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "Lib to connect your frontend to nuts-auth.",
   "repository": "nuts-foundation/nuts-auth-js",
-  "main": "index.js",
+  "main": "src/index.js",
   "keywords": [
     "nuts",
     "irma",
