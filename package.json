@@ -4,6 +4,7 @@
   "description": "Lib to connect your frontend to nuts-auth.",
   "repository": "nuts-foundation/nuts-auth-js",
   "main": "dist/index.js",
+  "license": "GPL-3.0-only",
   "scripts": {
     "build": "webpack --mode production"
   },
