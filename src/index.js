@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const client = (serverAddress, actingPartyCN) => {
+export function nutsAuthClient(serverAddress, actingPartyCN) {
 
   const validateToken = async function (token) {
     // construct body to post to nuts-node
@@ -24,7 +24,4 @@ const client = (serverAddress, actingPartyCN) => {
   return {
     validateToken
   }
-
-};
-
-export default client;
+}
