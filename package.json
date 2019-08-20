@@ -15,7 +15,8 @@
     "authentication"
   ],
   "files": [
-    "dist/index.js"
+    "dist/index.js",
+    "dist/browser.js"
   ],
   "sideEffects": false,
   "devDependencies": {
