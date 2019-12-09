@@ -5,7 +5,7 @@ export function nutsAuthClient(serverAddress, actingPartyCN) {
   const validateToken = async function (token) {
     // construct body to post to nuts-node
     const body = {
-      contract_format: 'jwt',
+      contract_format: 'JWT',
       contract_string: token,
       acting_party_cn: actingPartyCN,
     };

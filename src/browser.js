@@ -13,6 +13,8 @@ export function init(config) {
   config.postTokenPath = 'postTokenPath' in config ? config.postTokenPath : '/login';
   // location for the browser to navigate to after success
   config.afterSuccessPath = 'afterSuccessPath' in config ? config.afterSuccessPath : '/user';
+  // legalEntity field when initializing nuts session
+  config.legalEntity = 'legalEntity' in config ? config.legalEntity : '';
 
   // Check if qrCode element can be found
   if (!document.getElementById(config.qrEl)) {
@@ -62,7 +64,8 @@ export function init(config) {
     let postData = {
       type: "BehandelaarLogin",
       language: "NL",
-      version: "v1"
+      version: "v1",
+      legalEntity: config.legalEntity
     };
 
     fetch(`${config.nutsAuthUrl}/auth/contract/session`, {
