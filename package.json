@@ -1,6 +1,6 @@
 {
   "name": "@nuts-foundation/auth",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Lib to connect your frontend to nuts-auth.",
   "repository": "nuts-foundation/nuts-auth-js",
   "main": "dist/index.js",
