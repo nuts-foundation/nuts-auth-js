@@ -46,6 +46,8 @@ export function init(config) {
     QRCode.toCanvas(canvasEl, qrCodeString, {width: 350});
   };
 
+  const localStorageItemKey = 'session_init_info';
+
   const start = function () {
     // show helper after 20 seconds
     setTimeout(showHelper, 20000);
@@ -54,7 +56,7 @@ export function init(config) {
 
     // Check if there is a previous unfinished session.
     // This can happen if the page got reloaded during a session
-    let existingSessionInit = JSON.parse(localStorage.getItem('session_init_info'));
+    let existingSessionInit = JSON.parse(localStorage.getItem(localStorageItemKey));
     if (existingSessionInit) {
       setQrCode(existingSessionInit.qr_code_info);
       pollForStatus(existingSessionInit.session_id);
@@ -82,7 +84,7 @@ export function init(config) {
       }
     }).then((parsedResult) => {
       setQrCode(parsedResult.qr_code_info);
-      localStorage.setItem('session_init_info', JSON.stringify(parsedResult));
+      localStorage.setItem(localStorageItemKey, JSON.stringify(parsedResult));
       pollForStatus(parsedResult.session_id);
 
     }).catch((err) => {
@@ -120,15 +122,15 @@ export function init(config) {
         setTimeout(() => pollForStatus(status.token), 1000);
         break;
       case "TIMEOUT":
-        localStorage.clear();
+        localStorage.removeItem(localStorageItemKey);
         setState(EXPIRED_STATE);
         break;
       case "CANCELLED":
-        localStorage.clear();
+        localStorage.removeItem(localStorageItemKey);
         setState(CANCELLED_STATE);
         break;
       case "DONE":
-        localStorage.clear();
+        localStorage.removeItem(localStorageItemKey);
         if (status.proofStatus === "VALID") {
           setState(SUCCESS_STATE);
           handleSuccess(status);
@@ -138,7 +140,7 @@ export function init(config) {
         break;
       case "ERROR":
       default:
-        localStorage.clear();
+        localStorage.removeItem(localStorageItemKey);
         setState(ERROR_STATE);
         break;
     }
