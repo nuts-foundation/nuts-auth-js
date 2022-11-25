@@ -2,6 +2,8 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/@nuts-foundation/auth)](https://www.npmjs.com/package/@nuts-foundation/auth)
 
+> :warning: **This repository is no longer maintained. Use the packages provided by the Privacy By Design Foundation: https://github.com/privacybydesign.**
+
 An easy to use client js library to authenticate a user with nuts-auth.
 
 The library helps you with the following:
